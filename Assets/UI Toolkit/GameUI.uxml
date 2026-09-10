@@ -1,0 +1,16 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="Map" style="flex-grow: 1; position: absolute; height: 122px; width: 161px; border-top-left-radius: 13px; border-top-right-radius: 13px; border-bottom-right-radius: 13px; border-bottom-left-radius: 13px; background-color: rgb(52, 224, 185); opacity: 0.39; right: 48px; top: 18px;">
+        <ui:Label text="MAP" name="" style="margin-top: 45px; margin-right: 24px; margin-left: 50px; margin-bottom: 9px; height: 47px;"/>
+    </ui:VisualElement>
+    <ui:VisualElement style="flex-grow: 1; position: absolute; height: 90px; width: 197px; top: 18px; left: 48px; background-color: rgba(65, 65, 65, 0); border-left-color: rgb(0, 0, 0); border-right-color: rgb(0, 0, 0); border-top-color: rgb(0, 0, 0); border-bottom-color: rgb(0, 0, 0); border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px; align-items: flex-start; justify-content: flex-start; align-self: stretch;">
+        <ui:VisualElement name="Character" style="flex-grow: 1; position: absolute; height: 44px; top: 7px; width: 52px; left: 5px; background-color: rgb(238, 235, 235); opacity: 0.51;"/>
+        <ui:VisualElement name="CharacterInfo" style="flex-grow: 1; position: absolute; height: 43px; top: 7px; width: 84px; left: 63px; background-color: rgb(238, 235, 235); opacity: 0.51;">
+            <ui:Label text="Name" name="Name" style="font-size: 14px; margin-top: -4px;"/>
+            <ui:Label text="Level" name="Level" style="font-size: 14px; margin-top: -3px; margin-bottom: 5px;"/>
+        </ui:VisualElement>
+        <ui:VisualElement name="Items" style="flex-grow: 1; position: absolute; height: 20px; width: 177px; top: 59px; left: 8px; background-color: rgb(103, 124, 214);"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="Health" style="flex-grow: 1; position: absolute; height: 20px; width: 581px; background-color: rgb(15, 229, 0); top: 691px; left: 48px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; flex-direction: column;">
+        <ui:Label text="Health" name="AmountLabel" style="height: 8px; top: 0; opacity: 1; align-self: flex-end; font-size: 14px; justify-content: flex-start; align-items: stretch; align-content: flex-start; width: 25px; margin-bottom: 2px; margin-top: -5px; margin-right: 50px;"/>
+    </ui:VisualElement>
+</ui:UXML>

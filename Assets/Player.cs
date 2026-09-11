@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
     private float vertical;
     private float speed = 2;
-    private bool isFacingRight;
+    //private bool isFacingRight;
 
     void Start()
     {

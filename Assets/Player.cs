@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
+        //can also put them into one vector2 and apply speed to the vector in FixedUpdate()
+
         
         
     }
@@ -30,6 +32,8 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
         body.linearVelocity = new Vector2 (horizontal * speed, vertical * speed);
+
+
     }
 
 }

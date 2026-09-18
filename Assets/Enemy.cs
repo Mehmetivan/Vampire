@@ -7,7 +7,11 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Rigidbody2D body;
 
+    //public playerHealth playerHealth;
+
     public void SetTarget(Transform target) {  this.target = target; }
+
+    //public void SetPlayerHealth(playerHealth playerHealth) { this.playerHealth = playerHealth; }
 
     void Update()
     {

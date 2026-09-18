@@ -8,9 +8,11 @@ public class CubeManager : MonoBehaviour
     [SerializeField] Enemy enemyToSpawn;
     [SerializeField] Transform player;
 
+    //[SerializeField] playerHealth health;
+
     float nextSpawn = 0;
 
-    [Range(0.1f, 100.0f)]
+    [Range(1f, 100.0f)]
     [SerializeField] float SpawnRate;
     List<Enemy> enemyList = new();
 
@@ -35,6 +37,7 @@ public class CubeManager : MonoBehaviour
         Enemy newEnemy = Instantiate(enemyToSpawn, randomPosition, Quaternion.identity);
 
         newEnemy.SetTarget(player);
+        //newEnemy.SetPlayerHealth(health);
 
         enemyList.Add(newEnemy);
     }

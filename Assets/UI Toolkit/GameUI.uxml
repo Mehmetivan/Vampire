@@ -22,4 +22,12 @@
     </ui:VisualElement>
     <ui:VisualElement name="HealthBar" style="flex-grow: 1; position: absolute; height: 20px; width: 500px; background-color: rgb(15, 229, 0); top: 683px; left: 32px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; flex-direction: column;"/>
     <ui:ProgressBar value="22" title="my-progress" name="ProgressBar" style="height: 26px; width: 720px; flex-direction: column; top: 15px; left: 296px;"/>
+    <ui:VisualElement name="Pause" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.773); font-size: 14px; aspect-ratio: auto; top: -34px; opacity: 1; flex-shrink: 0; height: 720px; visibility: hidden; overflow: visible; display: flex;">
+        <ui:VisualElement name="PauseMenu" style="flex-grow: 0; flex-shrink: 0; background-color: rgba(38, 11, 10, 0.886); width: 328px; height: 257px; align-items: stretch; justify-content: flex-end; align-self: flex-end; flex-direction: column; top: 284px; right: 480px; visibility: hidden; position: relative;">
+            <ui:Label text="Bonfire" name="PauseMenuText" style="font-size: 35px; color: rgb(255, 254, 254); -unity-font-style: bold; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip; top: -37px;"/>
+            <ui:Button text="Resume" name="ResumeButton" style="top: -30px; font-size: 20px;"/>
+            <ui:Button text="Options" name="OptionsButton" style="top: -23px; font-size: 20px;"/>
+            <ui:Button text="Exit" name="OptionsButton" style="top: -17px; font-size: 20px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

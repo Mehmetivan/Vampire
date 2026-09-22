@@ -3,7 +3,7 @@ using UnityEngine;
 public class enemyHealth : MonoBehaviour, IDamageable
 {
     public int health;
-    public int maxHealth = 4;
+    public int maxHealth = 10;
     void Start()
     {
         health = maxHealth;

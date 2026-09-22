@@ -2,7 +2,7 @@
 %TAG !u! tag:unity3d.com,2011:
 --- !u!78 &1
 TagManager:
-  serializedVersion: 2
+  serializedVersion: 3
   tags: []
   layers:
   - Default
@@ -11,7 +11,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Objects
   - 
   - 
   - 
@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: NonWalkableWater
+    uniqueID: 1746719681
+    locked: 0
+  - name: WalkableGround
+    uniqueID: 1770168067
+    locked: 0
+  - name: GroundObjects
+    uniqueID: 1818419001
+    locked: 0
+  - name: New Layer 4
+    uniqueID: 2574469839
+    locked: 0
+  m_RenderingLayers:
+  - Default
+  m_MigratedRenderPipelines: []

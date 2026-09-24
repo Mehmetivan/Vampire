@@ -25,6 +25,15 @@ public class EnemySpawner : MonoBehaviour
             nextSpawn = 0; 
         }
 
+        //search a better way to remove enemies from the list when they are destroyed
+        for (int i = enemyList.Count - 1; i >= 0; i--)
+        {
+            if (enemyList[i] == null)
+            {
+                enemyList.RemoveAt(i);
+            }
+        }
+
     }
 
     public void SpawnCube()

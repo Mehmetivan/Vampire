@@ -22,12 +22,35 @@
     </ui:VisualElement>
     <ui:VisualElement name="HealthBar" style="flex-grow: 1; position: absolute; height: 20px; width: 500px; background-color: rgb(15, 229, 0); top: 683px; left: 32px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; flex-direction: column;"/>
     <ui:ProgressBar value="22" title="my-progress" name="ProgressBar" style="height: 26px; width: 720px; flex-direction: column; top: 15px; left: 296px;"/>
-    <ui:VisualElement name="Pause" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.773); font-size: 14px; aspect-ratio: auto; top: -34px; opacity: 1; flex-shrink: 0; height: 720px; visibility: hidden; overflow: visible; display: flex;">
-        <ui:VisualElement name="PauseMenu" style="flex-grow: 0; flex-shrink: 0; background-color: rgba(38, 11, 10, 0.886); width: 328px; height: 257px; align-items: stretch; justify-content: flex-end; align-self: flex-end; flex-direction: column; top: 284px; right: 480px; visibility: hidden; position: relative;">
+    <ui:VisualElement name="Pause" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.773); font-size: 14px; aspect-ratio: auto; top: -34px; opacity: 1; flex-shrink: 0; height: 720px; visibility: visible; overflow: visible; display: flex;">
+        <ui:VisualElement name="PauseMenu" style="flex-grow: 0; flex-shrink: 0; background-color: rgba(38, 11, 10, 0.886); width: 328px; height: 257px; align-items: stretch; justify-content: flex-end; align-self: flex-end; flex-direction: column; top: 284px; right: 480px; visibility: visible; position: relative; display: flex;">
             <ui:Label text="Bonfire" name="PauseMenuText" style="font-size: 35px; color: rgb(255, 254, 254); -unity-font-style: bold; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip; top: -37px;"/>
             <ui:Button text="Resume" name="ResumeButton" style="top: -30px; font-size: 20px;"/>
-            <ui:Button text="Options" name="OptionsButton" style="top: -23px; font-size: 20px;"/>
-            <ui:Button text="Exit" name="OptionsButton" style="top: -17px; font-size: 20px;"/>
+            <ui:Button text="Options" name="PauseOptionsButton" style="top: -23px; font-size: 20px;"/>
+            <ui:Button text="Exit" name="ExitOptionsGameButton" style="top: -17px; font-size: 20px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:Button text="|&gt;" name="PauseButton" style="position: absolute; top: 18px; white-space: normal; left: 247px; height: 29px; width: 41px;"/>
+    <ui:VisualElement name="Start" style="flex-grow: 1; position: absolute; height: 1078px; width: 1922px; background-color: rgb(27, 19, 19); top: 0; left: 0; visibility: visible;">
+        <ui:VisualElement name="StartMenu" style="flex-grow: 1; position: absolute; height: 437px; width: 758px; top: 131px; left: 262px; background-color: rgb(66, 19, 19);">
+            <ui:Label text="Minutes to Midnight" name="GameTitle" style="position: absolute; top: 19px; left: 90px; height: 104px; width: 579px; font-size: 58px; -unity-font-style: bold; -unity-text-outline-color: rgb(255, 255, 255); -unity-text-outline-width: 1px; color: rgb(27, 21, 21);"/>
+            <ui:Button text="PLAY" name="PlayButton" style="position: absolute; height: 62px; width: 120px; top: 160px; left: 494px; color: rgba(218, 218, 218, 0.271); background-color: rgba(0, 0, 0, 0.694); -unity-text-outline-color: rgb(88, 37, 37); -unity-text-outline-width: 40px; -unity-font-style: bold;"/>
+            <ui:Button text="EXIT" name="ExitButton" style="position: absolute; height: 62px; width: 120px; top: 345px; left: 315px; background-color: rgb(255, 0, 0); -unity-font-style: bold;"/>
+            <ui:Button text="OPTIONS" name="StartOptionsButton" style="position: absolute; height: 62px; width: 120px; top: 186px; left: 76px; background-color: rgb(55, 43, 43); -unity-font-style: bold;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Options" style="flex-grow: 1; position: absolute; height: 368px; width: 602px; top: 174px; left: 337px; color: rgb(55, 55, 55); background-color: rgb(51, 51, 51); visibility: visible;">
+        <ui:Label text="OPTIONS" name="OptionsTitle" style="position: absolute; top: 6px; left: 0; height: 68px; width: 588px; color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 44px;"/>
+        <ui:Button text="Button" style="position: absolute; top: 86px; left: 257px;"/>
+        <ui:Button text="Button" style="position: absolute; top: 153px; left: 253px;"/>
+        <ui:Button text="Exit" name="ExitOptionsButton" style="position: absolute; top: 292px; left: 263px;"/>
+        <ui:Button text="Button" style="position: absolute; top: 225px; left: 250px;"/>
+    </ui:VisualElement>
+    <ui:VisualElement name="GameOver" style="flex-grow: 1; position: absolute; height: 1078px; width: 1928px; background-color: rgba(0, 0, 0, 0.506); visibility: visible;">
+        <ui:VisualElement name="GameOverMenu" style="flex-grow: 1; position: absolute; height: 278px; width: 265px; top: 191px; left: 498px; background-color: rgb(47, 0, 0); visibility: visible; color: rgb(0, 0, 0);">
+            <ui:Label text="Game Over!" name="GameOverTitle" style="-unity-text-align: upper-center; font-size: 44px; color: rgb(255, 255, 255);"/>
+            <ui:Button text="Restart" name="RestartButton" style="position: absolute; -unity-text-align: middle-center; white-space: pre; top: 95px; left: 95px;"/>
+            <ui:Button text="Exit" name="ExitButton" style="position: absolute; -unity-text-align: middle-center; white-space: pre; top: 163px; left: 108px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

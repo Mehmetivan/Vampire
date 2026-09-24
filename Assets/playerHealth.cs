@@ -10,7 +10,8 @@ public class playerHealth : MonoBehaviour, IDamageable
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            GameManager.Instance.LoseGame();
         }
     }
 

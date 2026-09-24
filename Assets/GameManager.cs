@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        PauseGame();
     }
 
     public enum GameState
@@ -19,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public GameState State = GameState.PlayingState;
+    public GameState State = GameState.PauseState;
 
     [SerializeField] EnemySpawner enery_spawner;
     [SerializeField] Player player;  
@@ -33,9 +35,8 @@ public class GameManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Time.timeScale = 0;
-                    State = GameState.PauseState;
-
+                    PauseGame();
+                    UIController.Instance.OnPauseClicked();
                 }
 
 
@@ -45,8 +46,8 @@ public class GameManager : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.P))
                 {
-                    Time.timeScale = 1;
-                    State = GameState.PlayingState;
+                    ResumeGame();
+                    UIController.Instance.OnResumeClicked();
                 }
 
                 break;
@@ -57,4 +58,30 @@ public class GameManager : MonoBehaviour
         }
 
     }
+
+
+    public void PauseGame()
+    {
+        State = GameState.PauseState;
+        Time.timeScale = 0;
+    }
+
+    public void ResumeGame()
+    {
+        State = GameState.PlayingState;
+        Time.timeScale = 1;
+    }
+
+    public void LoseGame()
+    {
+        State = GameState.LoseState;
+        Time.timeScale = 0;
+        UIController.Instance.OnLoseGame();
+    }
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        //UIController.Instance.OnPlayClicked();
+    }
+
 }

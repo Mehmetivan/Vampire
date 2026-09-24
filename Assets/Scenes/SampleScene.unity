@@ -40829,6 +40829,7 @@ GameObject:
   - component: {fileID: 504328600}
   - component: {fileID: 504328599}
   - component: {fileID: 504328601}
+  - component: {fileID: 504328602}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -40888,6 +40889,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HealthBarUI
   playerHealth: {fileID: 1771833325}
   fullHealthWidth: 500
+--- !u!114 &504328602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504328598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1ce40218d50d4a4e924273a1776ab2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIController
+  uiDocument: {fileID: 504328599}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -65271,7 +65285,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1500596454}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!20 &1500596457
 Camera:
   m_ObjectHideFlags: 0

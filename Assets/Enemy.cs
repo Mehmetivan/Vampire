@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, IUpdateable
 {
     Transform target;
     [SerializeField] float MovementSpeed;
@@ -13,8 +13,22 @@ public class Enemy : MonoBehaviour
 
     //public void SetPlayerHealth(playerHealth playerHealth) { this.playerHealth = playerHealth; }
 
-    void Update()
+
+    private void OnEnable()
     {
+        GameUpdateManager.Instance.Register(this, UpdatePriority.High);
+
+    }
+    private void OnDisable()
+    {
+        GameUpdateManager.Instance.Unregister(this);
+        
+
+
+    }
+
+    public void OnUpdate(float deltaTime) {
+
         Vector2 direction = target.position - transform.position;
         direction.Normalize();
         // Hello!
@@ -22,6 +36,12 @@ public class Enemy : MonoBehaviour
         //transform.position += (Vector3)(direction * MovementSpeed) * Time.deltaTime;
         body.linearVelocity = direction * MovementSpeed;
 
-
     }
+
+    public void StopMoving()
+    {
+        //foreach(Enemy enemy in EnemySpawner.)
+    }
+
+
 }

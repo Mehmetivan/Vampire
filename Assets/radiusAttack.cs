@@ -29,9 +29,5 @@ public class radiusAttack : MonoBehaviour
         
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

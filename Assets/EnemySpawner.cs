@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class EnemySpawner : MonoBehaviour, IUpdateable
 {
 
     [SerializeField] Enemy enemyToSpawn;
@@ -16,13 +16,25 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] float SpawnRate;
     List<Enemy> enemyList = new();
 
-    private void Update()
+
+
+    private void OnEnable()
     {
-        nextSpawn += SpawnRate * Time.deltaTime;
+        GameUpdateManager.Instance.Register(this, UpdatePriority.High);
+
+    }
+    private void OnDisable()
+    {
+        GameUpdateManager.Instance.Unregister(this);
+
+    }
+
+    public void OnUpdate(float deltaTime) {
+        nextSpawn += SpawnRate * deltaTime;
         if (nextSpawn >= 1)
         {
             SpawnCube();
-            nextSpawn = 0; 
+            nextSpawn = 0;
         }
 
         //search a better way to remove enemies from the list when they are destroyed

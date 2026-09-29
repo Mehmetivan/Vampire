@@ -63,19 +63,20 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         State = GameState.PauseState;
-        Time.timeScale = 0;
+        GameUpdateManager.Instance.IsUpdating = false;
+        
     }
 
     public void ResumeGame()
     {
         State = GameState.PlayingState;
-        Time.timeScale = 1;
+        GameUpdateManager.Instance.IsUpdating = true;
     }
 
     public void LoseGame()
     {
         State = GameState.LoseState;
-        Time.timeScale = 0;
+        
         UIController.Instance.OnLoseGame();
     }
     public void RestartGame()

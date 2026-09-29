@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
 
@@ -17,23 +17,31 @@ public class Player : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnEnable()
+    {
+        GameUpdateManager.Instance.Register(this, UpdatePriority.High);
+        GameUpdateManager.Instance.RegisterFixed(this, UpdatePriority.High);
+    }
+    private void OnDisable() 
+    { 
+        GameUpdateManager.Instance.Unregister(this);
+        GameUpdateManager.Instance.UnregisterFixed(this);
+    }
+   
+
+    public void OnUpdate(float deltaTime)
     {
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
 
         //can also put them into one vector2 and apply speed to the vector in FixedUpdate()
-
-        
-        
     }
 
-    private void FixedUpdate()
-    {
-        body.linearVelocity = new Vector2 (horizontal * speed, vertical * speed);
+    public void OnFixedUpdate(float deltaTime) {
 
+        body.linearVelocity = new Vector2(horizontal * speed, vertical * speed);
 
     }
+
 
 }

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class HealthBarUI : MonoBehaviour
+public class HealthBarUI : MonoBehaviour, IUpdateable
 {
     public playerHealth playerHealth;
 
@@ -19,11 +19,23 @@ public class HealthBarUI : MonoBehaviour
         UpdateHealthBar();
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        UpdateHealthBar();
+        GameUpdateManager.Instance.Register(this, UpdatePriority.High);
 
     }
+    private void OnDisable()
+    {
+        GameUpdateManager.Instance.Unregister(this);
+
+    }
+
+    public void OnUpdate(float deltaTime) {
+
+        UpdateHealthBar();
+    }
+
+
 
     public void UpdateHealthBar()
     {

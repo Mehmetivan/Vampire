@@ -41,7 +41,7 @@ public class HealthBarUI : MonoBehaviour, IUpdateable
     {
     
 
-        float healthPercent = (float)playerHealth.health/ playerHealth.maxHealth;
+        float healthPercent = (float)playerHealth.health/ playerHealth.MaxHealth;
 
         float newWidth = healthPercent * fullHealthWidth;
         healthBar.style.width = new Length(newWidth, LengthUnit.Pixel);
@@ -49,7 +49,7 @@ public class HealthBarUI : MonoBehaviour, IUpdateable
 
     private void Reset()
     {
-        playerHealth.health = playerHealth.maxHealth;
+        playerHealth.health = playerHealth.MaxHealth;
         UpdateHealthBar();
     }
 }

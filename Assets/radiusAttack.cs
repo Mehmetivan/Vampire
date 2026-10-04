@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class radiusAttack : MonoBehaviour
 {
-    public int damage = 3;
+    //public int damage = 3;
     public float attackCooldown = 1f;
+
+    [SerializeField] private PlayerStats stats;
 
     private float attackTimer = 0f;
 
@@ -16,7 +18,7 @@ public class radiusAttack : MonoBehaviour
             IDamageable damageable = collision.gameObject.GetComponent<IDamageable>();
             if (damageable != null)
             {
-                damageable.TakeDamage(damage);
+                damageable.TakeDamage(stats.Damage);
 
                 attackTimer = attackCooldown;
             }

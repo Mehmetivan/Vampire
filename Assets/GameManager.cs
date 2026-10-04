@@ -63,14 +63,14 @@ public class GameManager : MonoBehaviour
     public void PauseGame()
     {
         State = GameState.PauseState;
-        GameUpdateManager.Instance.IsUpdating = false;
+        GameUpdateManager.Instance.SetUpdating(false);
         
     }
 
     public void ResumeGame()
     {
         State = GameState.PlayingState;
-        GameUpdateManager.Instance.IsUpdating = true;
+        GameUpdateManager.Instance.SetUpdating(true);
     }
 
     public void LoseGame()
@@ -78,6 +78,8 @@ public class GameManager : MonoBehaviour
         State = GameState.LoseState;
         
         UIController.Instance.OnLoseGame();
+
+        GameUpdateManager.Instance.SetUpdating(false);
     }
     public void RestartGame()
     {

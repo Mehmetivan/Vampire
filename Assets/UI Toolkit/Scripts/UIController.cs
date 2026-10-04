@@ -34,6 +34,16 @@ public class UIController : MonoBehaviour
 
     private Button restartButton;
 
+    private VisualElement UpgradeMenu;
+    private VisualElement UpgradeBackground;
+
+    private ProgressBar progressBar;
+
+    private Button SpeedUpgrade;
+    private Button HealthUpgrade;
+    private Button DamageUpgrade;       
+
+
     void Awake()
     {
         Instance = this;
@@ -89,6 +99,23 @@ public class UIController : MonoBehaviour
         ExitOptionsButton.clicked += OnExitOptionsClicked;
 
         restartButton.clicked += OnRestartButtonClicked;
+
+
+        UpgradeBackground = root.Q<VisualElement>("Upgrade");
+        UpgradeMenu = root.Q<VisualElement>("UpgradeMenu");
+        progressBar = root.Q<ProgressBar>("ProgressBar");
+
+        UpgradeMenu.style.display = DisplayStyle.None;
+        UpgradeBackground.style.display = DisplayStyle.None;
+
+        SpeedUpgrade = root.Q<Button>("SpeedUpgrade");
+        HealthUpgrade = root.Q<Button>("HealthUpgrade");
+        DamageUpgrade = root.Q<Button>("DamageUpgrade");
+
+
+        SpeedUpgrade.clicked += () => UpgradeManager.Instance.Choose(UpgradeType.Speed);
+        HealthUpgrade.clicked += () => UpgradeManager.Instance.Choose(UpgradeType.Health);
+        DamageUpgrade.clicked += () => UpgradeManager.Instance.Choose(UpgradeType.Damage);
 
     }
 
@@ -150,5 +177,25 @@ public class UIController : MonoBehaviour
         Debug.Log("RESTART BUTTON CLICKED!");
         GameManager.Instance.RestartGame();
     }
+    public void ShowUpgradeMenu()
+    {
+        UpgradeBackground.style.display = DisplayStyle.Flex;
+        UpgradeMenu.style.display = DisplayStyle.Flex;
+    }
+
+    public void HideUpgradeMenu()
+    {
+        UpgradeBackground.style.display = DisplayStyle.None;
+        UpgradeMenu.style.display = DisplayStyle.None;
+    }
+
+    public void SetUpgradeProgress(float value01)
+    {
+        if (progressBar != null) progressBar.value = value01 * 100f; // ProgressBar defaults to 0-100
+    }
+
+
+
+
 
 }

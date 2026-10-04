@@ -2,20 +2,28 @@ using UnityEngine;
 
 public class enemyHealth : MonoBehaviour, IDamageable
 {
-    public int health;
-    public int maxHealth = 10;
+    public float health;
+    public float maxHealth = 10f;
     void Start()
     {
         health = maxHealth;
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
         health -= damage;
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Die();
         }
+    }
+
+    public static event System.Action<enemyHealth> Killed;
+
+    public void Die()
+    {
+        Killed?.Invoke(this);
+        Destroy(gameObject); 
     }
 
 

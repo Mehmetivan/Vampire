@@ -148,7 +148,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc07d8b880aed0d47b69ac1e122d31a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameUpdateManager
-  IsUpdating: 1
 --- !u!4 &179797378
 Transform:
   m_ObjectHideFlags: 0
@@ -40875,6 +40874,7 @@ GameObject:
   - component: {fileID: 504328599}
   - component: {fileID: 504328601}
   - component: {fileID: 504328602}
+  - component: {fileID: 504328603}
   m_Layer: 5
   m_Name: UIDocument
   m_TagString: Untagged
@@ -40946,6 +40946,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1ce40218d50d4a4e924273a1776ab2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIController
+  uiDocument: {fileID: 504328599}
+--- !u!114 &504328603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504328598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d83261153d8348840b3b801cd12f9be3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Score
   uiDocument: {fileID: 504328599}
 --- !u!1 &519420028
 GameObject:
@@ -65565,6 +65578,7 @@ GameObject:
   - component: {fileID: 1771833322}
   - component: {fileID: 1771833324}
   - component: {fileID: 1771833325}
+  - component: {fileID: 1771833326}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -65585,6 +65599,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   body: {fileID: 0}
+  stats: {fileID: 1771833326}
 --- !u!212 &1771833320
 SpriteRenderer:
   serializedVersion: 3
@@ -65783,7 +65798,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f005b19c59f6d4199b035ac0bfbce9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  stats: {fileID: 0}
   health: 10
+--- !u!114 &1771833326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1771833318}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 249596c5f7c9a9f44b6365197eef9d9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  Speed: 2
+  MaxHealth: 10
+  Damage: 10
 --- !u!1 &1879436236
 GameObject:
   m_ObjectHideFlags: 0
@@ -65829,8 +65860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1514860e8acd4de4db0f83361397c37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  damage: 3
   attackCooldown: 0.3
+  stats: {fileID: 1771833326}
 --- !u!58 &1879436239
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -65867,6 +65898,53 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 2
+--- !u!1 &1887483818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1887483820}
+  - component: {fileID: 1887483819}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1887483819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887483818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 705467604f405c143aaac75aaa31dd37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UpgradeManager
+  stats: {fileID: 1771833326}
+  killsPerUpgrade: 10
+  playerHealth: {fileID: 1771833325}
+--- !u!4 &1887483820
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1887483818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.04111, y: 0.03535, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1976141118
 GameObject:
   m_ObjectHideFlags: 0
@@ -66009,3 +66087,4 @@ SceneRoots:
   - {fileID: 885256506}
   - {fileID: 1324482372}
   - {fileID: 179797378}
+  - {fileID: 1887483820}

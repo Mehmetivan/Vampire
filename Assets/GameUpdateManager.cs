@@ -7,7 +7,15 @@ public class GameUpdateManager : MonoBehaviour
     public static GameUpdateManager Instance;
     private readonly List<IUpdateable> highPriorityUpdates = new();
     private readonly List<IFixedUpdateable> highPriorityFixedUpdates = new();
-    public bool IsUpdating;
+    public bool IsUpdating { get; private set; }
+    public event System.Action<bool> PausedChanged;
+
+    public void SetUpdating(bool updating)
+    {
+        if (IsUpdating == updating) return; // nothing changed, do nothing
+        IsUpdating = updating;
+        PausedChanged?.Invoke(!updating);   // tell listeners: true = paused
+    }
 
     //private const float UpdateInterval = 0.15f;
     //private float updateTimer;

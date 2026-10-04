@@ -1,3 +1,4 @@
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
@@ -9,7 +10,14 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
     private float horizontal;
 
     private float vertical;
-    private float speed = 2;
+
+
+    [SerializeField] private PlayerStats stats;
+
+    //public float speed = stats.Speed;
+
+    //private float speed = 2f;
+
     //private bool isFacingRight;
 
     void Start()
@@ -21,11 +29,13 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
     {
         GameUpdateManager.Instance.Register(this, UpdatePriority.High);
         GameUpdateManager.Instance.RegisterFixed(this, UpdatePriority.High);
+        GameUpdateManager.Instance.PausedChanged += HandlePausedChanged;
     }
     private void OnDisable() 
     { 
         GameUpdateManager.Instance.Unregister(this);
         GameUpdateManager.Instance.UnregisterFixed(this);
+        GameUpdateManager.Instance.PausedChanged -= HandlePausedChanged;
     }
    
 
@@ -39,8 +49,13 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
 
     public void OnFixedUpdate(float deltaTime) {
 
-        body.linearVelocity = new Vector2(horizontal * speed, vertical * speed);
+        body.linearVelocity = new Vector2(horizontal * stats.Speed, vertical * stats.Speed);
 
+    }
+
+    private void HandlePausedChanged(bool paused)
+    {
+        body.simulated = !paused;
     }
 
 

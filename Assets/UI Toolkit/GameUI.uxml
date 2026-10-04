@@ -18,10 +18,12 @@
                 </Bindings>
             </ui:VisualElement>
         </ui:VisualElement>
-        <ui:VisualElement name="Items" style="flex-grow: 1; position: absolute; height: 20px; width: 177px; top: 59px; left: 8px; background-color: rgb(103, 124, 214);"/>
+        <ui:VisualElement name="Items" style="flex-grow: 1; position: absolute; height: 20px; width: 177px; top: 59px; left: 8px; background-color: rgb(103, 124, 214);">
+            <ui:Label text="0" name="Score" style="position: absolute; top: -4px; left: 1px; height: 11px; width: 121px; -unity-text-align: upper-left; font-size: 12px;"/>
+        </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="HealthBar" style="flex-grow: 1; position: absolute; height: 20px; width: 500px; background-color: rgb(15, 229, 0); top: 683px; left: 32px; border-top-left-radius: 2px; border-top-right-radius: 2px; border-bottom-right-radius: 2px; border-bottom-left-radius: 2px; flex-direction: column;"/>
-    <ui:ProgressBar value="22" title="my-progress" name="ProgressBar" style="height: 26px; width: 720px; flex-direction: column; top: 15px; left: 296px;"/>
+    <ui:ProgressBar value="22" title="" name="ProgressBar" style="height: 26px; width: 720px; flex-direction: column; top: 15px; left: 296px; border-left-color: rgb(0, 44, 90); border-right-color: rgb(0, 44, 90); border-top-color: rgb(0, 44, 90); border-bottom-color: rgb(0, 44, 90); background-color: rgb(16, 23, 114); -unity-background-image-tint-color: rgb(31, 42, 120); -unity-text-outline-color: rgb(16, 23, 114); color: rgb(16, 23, 114);"/>
     <ui:VisualElement name="Pause" style="flex-grow: 0; background-color: rgba(0, 0, 0, 0.773); font-size: 14px; aspect-ratio: auto; top: -34px; opacity: 1; flex-shrink: 0; height: 720px; visibility: visible; overflow: visible; display: flex;">
         <ui:VisualElement name="PauseMenu" style="flex-grow: 0; flex-shrink: 0; background-color: rgba(38, 11, 10, 0.886); width: 328px; height: 257px; align-items: stretch; justify-content: flex-end; align-self: flex-end; flex-direction: column; top: 284px; right: 480px; visibility: visible; position: relative; display: flex;">
             <ui:Label text="Bonfire" name="PauseMenuText" style="font-size: 35px; color: rgb(255, 254, 254); -unity-font-style: bold; -unity-text-align: upper-center; white-space: nowrap; text-overflow: clip; top: -37px;"/>
@@ -51,6 +53,14 @@
             <ui:Label text="Game Over!" name="GameOverTitle" style="-unity-text-align: upper-center; font-size: 44px; color: rgb(255, 255, 255);"/>
             <ui:Button text="Restart" name="RestartButton" style="position: absolute; -unity-text-align: middle-center; white-space: pre; top: 95px; left: 95px;"/>
             <ui:Button text="Exit" name="ExitButton" style="position: absolute; -unity-text-align: middle-center; white-space: pre; top: 163px; left: 108px;"/>
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="Upgrade" style="flex-grow: 1; position: absolute; height: 1077px; width: 1932px; background-color: rgba(0, 0, 0, 0.416);">
+        <ui:VisualElement name="UpgradeMenu" style="flex-grow: 1; position: absolute; height: 330px; width: 266px; top: 180px; left: 493px; background-color: rgb(133, 133, 133);">
+            <ui:Label text="CHOOSE UPGRADE!" name="UpgradeMenuTitle" style="-unity-text-align: upper-center;"/>
+            <ui:Button text="Speed+" name="SpeedUpgrade" style="height: 44px; width: 168px; position: absolute; top: 226px; left: 42px;"/>
+            <ui:Button text="Health+" name="HealthUpgrade" style="position: absolute; top: 56px; left: 39px; height: 51px; width: 165px;"/>
+            <ui:Button text="Damage+" name="DamageUpgrade" style="position: absolute; top: 138px; left: 40px; height: 49px; width: 169px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

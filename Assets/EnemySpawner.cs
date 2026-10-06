@@ -58,6 +58,12 @@ public class EnemySpawner : MonoBehaviour, IUpdateable
         Enemy newEnemy = Instantiate(enemyToSpawn, randomPosition, Quaternion.identity);
 
         newEnemy.SetTarget(player);
+
+        var um = UpgradeManager.Instance;
+        newEnemy.GetComponent<EnemyStats>().ApplyScaling(
+            um.EnemySpeedMultiplier,
+            um.EnemyHealthMultiplier,
+            um.EnemyDamageMultiplier);
         //newEnemy.SetPlayerHealth(health);
 
         enemyList.Add(newEnemy);

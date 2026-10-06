@@ -39,6 +39,8 @@
             <ui:Button text="PLAY" name="PlayButton" style="position: absolute; height: 62px; width: 120px; top: 160px; left: 494px; color: rgba(218, 218, 218, 0.271); background-color: rgba(0, 0, 0, 0.694); -unity-text-outline-color: rgb(88, 37, 37); -unity-text-outline-width: 40px; -unity-font-style: bold;"/>
             <ui:Button text="EXIT" name="ExitButton" style="position: absolute; height: 62px; width: 120px; top: 345px; left: 315px; background-color: rgb(255, 0, 0); -unity-font-style: bold;"/>
             <ui:Button text="OPTIONS" name="StartOptionsButton" style="position: absolute; height: 62px; width: 120px; top: 186px; left: 76px; background-color: rgb(55, 43, 43); -unity-font-style: bold;"/>
+            <ui:Label text="HighScore:" name="HighScoreLabel" parse-escape-sequences="false" style="position: absolute; height: 47px; width: 183px; top: 261px; left: 428px;"/>
+            <ui:Label text="" name="HighScore" style="position: absolute; height: 20px; width: 194px; top: 263px; left: 507px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
     <ui:VisualElement name="Options" style="flex-grow: 1; position: absolute; height: 368px; width: 602px; top: 174px; left: 337px; color: rgb(55, 55, 55); background-color: rgb(51, 51, 51); visibility: visible;">
@@ -55,7 +57,7 @@
             <ui:Button text="Exit" name="ExitButton" style="position: absolute; -unity-text-align: middle-center; white-space: pre; top: 163px; left: 108px;"/>
         </ui:VisualElement>
     </ui:VisualElement>
-    <ui:VisualElement name="Upgrade" style="flex-grow: 1; position: absolute; height: 1077px; width: 1932px; background-color: rgba(0, 0, 0, 0.416);">
+    <ui:VisualElement name="Upgrade" style="flex-grow: 1; position: absolute; height: 1077px; width: 1932px; background-color: rgba(0, 0, 0, 0.416); visibility: visible;">
         <ui:VisualElement name="UpgradeMenu" style="flex-grow: 1; position: absolute; height: 330px; width: 266px; top: 180px; left: 493px; background-color: rgb(133, 133, 133);">
             <ui:Label text="CHOOSE UPGRADE!" name="UpgradeMenuTitle" style="-unity-text-align: upper-center;"/>
             <ui:Button text="Speed+" name="SpeedUpgrade" style="height: 44px; width: 168px; position: absolute; top: 226px; left: 42px;"/>

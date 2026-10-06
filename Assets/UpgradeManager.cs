@@ -7,6 +7,9 @@ public class UpgradeManager : MonoBehaviour
     public static UpgradeManager Instance;
 
     [SerializeField] private PlayerStats stats;
+
+    //[SerializeField] private EnemyStats enemyStats;
+
     [SerializeField] private int killsPerUpgrade = 10;
 
     [SerializeField] private playerHealth playerHealth;
@@ -30,7 +33,7 @@ public class UpgradeManager : MonoBehaviour
         if (kills >= killsPerUpgrade)
         {
             menuOpen = true;
-            GameManager.Instance.PauseGame();
+            GameManager.Instance.EnterUpgradeState();
             UIController.Instance.ShowUpgradeMenu();
         }
     }
@@ -41,7 +44,7 @@ public class UpgradeManager : MonoBehaviour
         {
             case UpgradeType.Speed: stats.Speed *= 1.1f; break;
             case UpgradeType.Health:
-                stats.MaxHealth += 2;
+                stats.MaxHealth += 2f;
                 playerHealth.Heal(stats.MaxHealth);
                 break;
             case UpgradeType.Damage: stats.Damage *= 1.15f; break;
@@ -52,6 +55,24 @@ public class UpgradeManager : MonoBehaviour
         menuOpen = false;
         UIController.Instance.SetUpgradeProgress(0);
         UIController.Instance.HideUpgradeMenu();
-        GameManager.Instance.ResumeGame();
+        GameManager.Instance.ResumeGame(true);
     }
+
+
+    public float EnemySpeedMultiplier { get; private set; } = 1f;
+    public float EnemyHealthMultiplier { get; private set; } = 1f;
+    public float EnemyDamageMultiplier { get; private set; } = 1f;
+
+    public void ChangeEnemyStat(UpgradeType type, float multiplier)
+    {
+        switch (type)
+        {
+            case UpgradeType.Speed: EnemySpeedMultiplier *= multiplier; break;
+            case UpgradeType.Health: EnemyHealthMultiplier *= multiplier; break;
+            case UpgradeType.Damage: EnemyDamageMultiplier *= multiplier; break;
+        }
+    }
+
+
+
 }

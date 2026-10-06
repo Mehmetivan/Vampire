@@ -1,12 +1,17 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class Enemy : MonoBehaviour, IUpdateable
 {
     Transform target;
-    [SerializeField] float MovementSpeed;
+    //[SerializeField] float MovementSpeed;
     [SerializeField] private Rigidbody2D body;
 
+    [SerializeField] private EnemyStats stats;
+
     private Vector2 savedVelocity;
+
+    public float speed => stats.Speed;
 
 
     public void SetTarget(Transform target) { this.target = target; }
@@ -31,7 +36,7 @@ public class Enemy : MonoBehaviour, IUpdateable
     public void OnUpdate(float deltaTime)
     {
         Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
-        body.linearVelocity = direction * MovementSpeed;
+        body.linearVelocity = direction * speed;
     }
 
     private void HandlePausedChanged(bool paused)

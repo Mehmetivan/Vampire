@@ -4,8 +4,10 @@ public class enemyDamage : MonoBehaviour
 
 {
 
+    [SerializeField] private EnemyStats stats;
+
     //public playerHealth playerHealth;
-    public float damage = 2f;
+    //public float damage => stats.Damage;
 
     
     void Start()
@@ -21,7 +23,7 @@ public class enemyDamage : MonoBehaviour
 
         if (damageable != null)
         {
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(stats.Damage);
         }
     }
 

@@ -25,6 +25,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] EnemySpawner enery_spawner;
     [SerializeField] Player player;  
+
+    
     
     void Update()
     {
@@ -62,15 +64,27 @@ public class GameManager : MonoBehaviour
 
     public void PauseGame()
     {
+        if (State == GameState.UpgradeState || State == GameState.LoseState) return;
+
         State = GameState.PauseState;
         GameUpdateManager.Instance.SetUpdating(false);
-        
     }
 
     public void ResumeGame()
     {
         State = GameState.PlayingState;
         GameUpdateManager.Instance.SetUpdating(true);
+    }
+
+    public void ResumeGame(bool resumeFromUpgrade)
+    {
+        if (resumeFromUpgrade)
+        {
+
+            UpgradeManager.Instance.ChangeEnemyStat(UpgradeType.Health, 1.1f);
+            State = GameState.PlayingState;
+            GameUpdateManager.Instance.SetUpdating(true);
+        }
     }
 
     public void LoseGame()
@@ -86,5 +100,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         //UIController.Instance.OnPlayClicked();
     }
+    public void EnterUpgradeState()
+    {
+        State = GameState.UpgradeState;
+        GameUpdateManager.Instance.SetUpdating(false);
+    }
+
+
+
 
 }

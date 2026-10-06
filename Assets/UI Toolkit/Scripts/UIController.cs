@@ -41,7 +41,9 @@ public class UIController : MonoBehaviour
 
     private Button SpeedUpgrade;
     private Button HealthUpgrade;
-    private Button DamageUpgrade;       
+    private Button DamageUpgrade;
+
+    private Label Highscore;
 
 
     void Awake()
@@ -117,6 +119,10 @@ public class UIController : MonoBehaviour
         HealthUpgrade.clicked += () => UpgradeManager.Instance.Choose(UpgradeType.Health);
         DamageUpgrade.clicked += () => UpgradeManager.Instance.Choose(UpgradeType.Damage);
 
+
+        Highscore = root.Q<Label>("HighScore");
+        Highscore.text = PlayerPrefs.GetFloat("HighScore", 0f).ToString("F0");
+
     }
 
     public void OnPlayClicked()
@@ -131,6 +137,9 @@ public class UIController : MonoBehaviour
     public void OnPauseClicked()
     {
         Debug.Log("PAUSE BUTTON CLICKED!");
+
+        if (GameManager.Instance.State != GameManager.GameState.PlayingState) return;
+
 
         GameManager.Instance.PauseGame();
 

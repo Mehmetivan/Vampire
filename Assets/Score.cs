@@ -18,6 +18,11 @@ public class Score : MonoBehaviour, IUpdateable
     {
         scoreValue += deltaTime;
         score.text = scoreValue.ToString("0");
+        if (scoreValue > PlayerPrefs.GetFloat("HighScore", 0f)) {
+            PlayerPrefs.SetFloat("HighScore", scoreValue);
+
+        }
+           
     }
 
     private void OnEnable()

@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -1056281511167519236}
   - component: {fileID: 8360139666274672040}
   - component: {fileID: 3146593217663261466}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -218,3 +218,6 @@ MonoBehaviour:
   Speed: 1
   MaxHealth: 10
   Damage: 3
+  BatSpeed: 0
+  BatMaxHealth: 10
+  BatDamage: 3.5

@@ -9,13 +9,6 @@ public class enemyDamage : MonoBehaviour
     //public playerHealth playerHealth;
     //public float damage => stats.Damage;
 
-    
-    void Start()
-    {
-        
-    }
-
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {

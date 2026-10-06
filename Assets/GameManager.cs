@@ -76,17 +76,6 @@ public class GameManager : MonoBehaviour
         GameUpdateManager.Instance.SetUpdating(true);
     }
 
-    public void ResumeGame(bool resumeFromUpgrade)
-    {
-        if (resumeFromUpgrade)
-        {
-
-            UpgradeManager.Instance.ChangeEnemyStat(UpgradeType.Health, 1.1f);
-            State = GameState.PlayingState;
-            GameUpdateManager.Instance.SetUpdating(true);
-        }
-    }
-
     public void LoseGame()
     {
         State = GameState.LoseState;
@@ -104,6 +93,7 @@ public class GameManager : MonoBehaviour
     {
         State = GameState.UpgradeState;
         GameUpdateManager.Instance.SetUpdating(false);
+        UpgradeManager.Instance.ChangeEnemyStat(UpgradeType.Health, 1.1f);
     }
 
 

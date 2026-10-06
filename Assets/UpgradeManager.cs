@@ -55,7 +55,7 @@ public class UpgradeManager : MonoBehaviour
         menuOpen = false;
         UIController.Instance.SetUpgradeProgress(0);
         UIController.Instance.HideUpgradeMenu();
-        GameManager.Instance.ResumeGame(true);
+        GameManager.Instance.ResumeGame();
     }
 
 

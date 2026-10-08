@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 8515773463021804960}
   - component: {fileID: 2395472512866225575}
   - component: {fileID: 2388617169679953937}
-  - component: {fileID: 4337130737825598484}
   - component: {fileID: 7791169243595545027}
   - component: {fileID: 199842636073715990}
   - component: {fileID: -1612404524703361843}
   - component: {fileID: 1619517063521262546}
+  - component: {fileID: 724833113590695920}
   m_Layer: 7
   m_Name: Bat
   m_TagString: Untagged
@@ -162,20 +162,6 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.02}
   m_Radius: 0.12
---- !u!114 &4337130737825598484
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5760514750445149755}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72dcecdaa257b924c8b5d0dcfc7adedf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  body: {fileID: 2395472512866225575}
-  stats: {fileID: 7791169243595545027}
 --- !u!114 &7791169243595545027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,13 +187,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5760514750445149755}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b18993724dcfa24797f0660eab3eace, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Bat
   body: {fileID: 2395472512866225575}
   stats: {fileID: 7791169243595545027}
+  deathEffect: {fileID: 2397492309719047642, guid: bb01bb1ed20989544b2cbac55be420cc, type: 3}
 --- !u!114 &-1612404524703361843
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,3 +246,25 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
   m_Radius: 0.55
+--- !u!95 &724833113590695920
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5760514750445149755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7df8db48be3dfab46845ebc8036aa448, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

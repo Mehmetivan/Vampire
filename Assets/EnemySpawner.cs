@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour, IUpdateable
 
     [SerializeField] Enemy enemyToSpawn;
 
-    [SerializeField] Enemy Bat;
+    [SerializeField] Bat bat;
     [SerializeField] Transform player;
 
     //[SerializeField] playerHealth health;
@@ -18,6 +18,7 @@ public class EnemySpawner : MonoBehaviour, IUpdateable
     [Range(1f, 100.0f)]
     [SerializeField] float SpawnRate;
     List<Enemy> enemyList = new();
+    List<Bat> batList = new();
 
 
 
@@ -56,6 +57,14 @@ public class EnemySpawner : MonoBehaviour, IUpdateable
             }
         }
 
+        for (int i = batList.Count - 1; i >= 0; i--)
+        {
+            if (batList[i] == null)
+            {
+                batList.RemoveAt(i);
+            }
+        }
+
     }
 
     public void SpawnCube()
@@ -84,15 +93,15 @@ public class EnemySpawner : MonoBehaviour, IUpdateable
         Vector2 randomPosition = Vector2.zero;
         randomPosition.x = Random.Range(-5, 5);
         randomPosition.y = Random.Range(-5, 5);
-        Enemy newEnemy = Instantiate(Bat, randomPosition, Quaternion.identity);
-        newEnemy.SetTarget(player);
+        Bat newBat = Instantiate(bat, randomPosition, Quaternion.identity);
+        newBat.SetTarget(player);
         var um = UpgradeManager.Instance;
-        newEnemy.GetComponent<EnemyStats>().ApplyScaling(
+        newBat.GetComponent<EnemyStats>().ApplyScaling(
             um.EnemySpeedMultiplier,
             um.EnemyHealthMultiplier,
             um.EnemyDamageMultiplier);
         //newEnemy.SetPlayerHealth(health);
-        enemyList.Add(newEnemy);
+        batList.Add(newBat);
     }
 
 

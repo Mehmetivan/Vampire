@@ -25,20 +25,25 @@ public class batDamage : MonoBehaviour, IUpdateable
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out playerHealth player)) return;
+        playerHealth player = other.GetComponentInParent<playerHealth>();
+        Debug.Log($"Entered by {other.name}, playerHealth found: {player != null}", this);
+        if (player == null) return;
 
         victim = player;
-        playerInRange = true;      // always track this
+        playerInRange = true;
 
-        if (armed) return;         // fuse already running, don't restart it
+        if (armed) return;
         timer = delay;
         armed = true;
+        Debug.Log("Fuse started", this);
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (!other.TryGetComponent(out playerHealth player)) return;
-        if (player == victim) playerInRange = false;   // fuse keeps running
+        playerHealth player = other.GetComponentInParent<playerHealth>();
+        if (player == null) return;
+
+        if (player == victim) playerInRange = false;
     }
 
     public void OnUpdate(float deltaTime)
@@ -48,6 +53,7 @@ public class batDamage : MonoBehaviour, IUpdateable
         timer -= deltaTime;
         if (timer <= 0f)
         {
+            Debug.Log("Fuse finished", this);
             if (playerInRange && victim != null)
                 victim.TakeDamage((int)stats.BatDamage);
 

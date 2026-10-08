@@ -23,10 +23,19 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
 
     private float dashingCooldown = 1f;
 
+    [SerializeField] private SwordAttack sword;
+
+
+
 
     [SerializeField] private PlayerStats stats;
 
     [SerializeField] private TrailRenderer trailRenderer;
+
+    [SerializeField] private Animator animator;
+
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
 
 
 
@@ -40,6 +49,7 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
     void Start()
     {
         body = GetComponent<Rigidbody2D>();
+
     }
 
     private void OnEnable()
@@ -48,22 +58,33 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
         GameUpdateManager.Instance.RegisterFixed(this, UpdatePriority.High);
         GameUpdateManager.Instance.PausedChanged += HandlePausedChanged;
     }
-    private void OnDisable() 
-    { 
+    private void OnDisable()
+    {
         GameUpdateManager.Instance.Unregister(this);
         GameUpdateManager.Instance.UnregisterFixed(this);
         GameUpdateManager.Instance.PausedChanged -= HandlePausedChanged;
     }
-   
+
 
     public void OnUpdate(float deltaTime)
 
 
     {
-   
+
 
         horizontal = Input.GetAxisRaw("Horizontal");
         vertical = Input.GetAxisRaw("Vertical");
+
+        if (horizontal > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (horizontal < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+
 
         spacePressed = Input.GetKeyDown(KeyCode.Space);
 
@@ -71,8 +92,17 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
         {
             StartCoroutine(Dash());
         }
-
         //can also put them into one vector2 and apply speed to the vector in FixedUpdate()
+
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            animator.SetBool("isAttacking", true);
+            sword.attack();
+
+
+        }
+
     }
 
     public void OnFixedUpdate(float deltaTime) {
@@ -80,6 +110,17 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
         if (isDashing) return;
 
         body.linearVelocity = new Vector2(horizontal * stats.Speed, vertical * stats.Speed);
+
+        if (horizontal != 0 || vertical != 0)
+        {
+            animator.SetBool("isRunning", true);
+
+        }
+        else
+        {
+            animator.SetBool("isRunning", false);
+        }
+
 
     }
 
@@ -106,6 +147,13 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
         yield return new WaitForSeconds(dashingCooldown);
         canDash = true;
     }
+
+    public void endAttack()
+    {
+        animator.SetBool("isAttacking", false);
+    }
+
+
 
 
 

@@ -9,6 +9,13 @@ public class Enemy : MonoBehaviour, IUpdateable
 
     [SerializeField] private EnemyStats stats;
 
+    [SerializeField] private Animator animator;
+
+
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+
+
     private Vector2 savedVelocity;
 
     public float speed => stats.Speed;
@@ -37,6 +44,7 @@ public class Enemy : MonoBehaviour, IUpdateable
     {
         Vector2 direction = ((Vector2)target.position - (Vector2)transform.position).normalized;
         body.linearVelocity = direction * speed;
+
     }
 
     private void HandlePausedChanged(bool paused)

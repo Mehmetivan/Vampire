@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: -1056281511167519236}
   - component: {fileID: 8360139666274672040}
   - component: {fileID: 3146593217663261466}
+  - component: {fileID: -4778648770682095163}
   m_Layer: 8
   m_Name: Enemy
   m_TagString: Untagged
@@ -139,6 +140,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   body: {fileID: 5412229256077601740}
   stats: {fileID: 3146593217663261466}
+  animator: {fileID: -4778648770682095163}
+  spriteRenderer: {fileID: 2228860782823876295}
+  player: {fileID: 0}
 --- !u!70 &2866167223438878960
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -217,8 +221,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyStats
   Speed: 1
-  MaxHealth: 10
+  MaxHealth: 30
   Damage: 3
   BatSpeed: 0
   BatMaxHealth: 10
   BatDamage: 3.5
+--- !u!95 &-4778648770682095163
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4229087481890954854}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2bd53b65ad74f064aaad892eb64a2cbf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

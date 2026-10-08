@@ -9,6 +9,8 @@ public class Bat : MonoBehaviour, IUpdateable
 
     [SerializeField] private EnemyStats stats;
 
+
+    [SerializeField] private GameObject deathEffect;
     private Vector2 savedVelocity;
 
     public float speed => stats.Speed;
@@ -57,4 +59,9 @@ public class Bat : MonoBehaviour, IUpdateable
         body.simulated = true;
         body.linearVelocity = savedVelocity;
     }
+
+    public void Die() { Destroy(gameObject); if (deathEffect != null)
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+    }
+
 }

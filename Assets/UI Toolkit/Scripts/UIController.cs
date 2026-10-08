@@ -45,6 +45,9 @@ public class UIController : MonoBehaviour
 
     private Label Highscore;
 
+    private Slider volumeSlider;
+    private Toggle fullscreenToggle;
+
 
     void Awake()
     {
@@ -124,6 +127,32 @@ public class UIController : MonoBehaviour
         Highscore.text = PlayerPrefs.GetFloat("HighScore", 0f).ToString("F0");
 
         SoundEffects.Instance.PlayMainMenu();
+
+        volumeSlider = root.Q<Slider>("VolumeSlider");
+        fullscreenToggle = root.Q<Toggle>("FullscreenToggle");
+
+        // load saved settings
+        float savedVolume = PlayerPrefs.GetFloat("Volume", 1f);
+        bool savedFullscreen = PlayerPrefs.GetInt("Fullscreen", Screen.fullScreen ? 1 : 0) == 1;
+
+        volumeSlider.SetValueWithoutNotify(savedVolume);
+        fullscreenToggle.SetValueWithoutNotify(savedFullscreen);
+        AudioListener.volume = savedVolume;
+        Screen.fullScreen = savedFullscreen;
+
+        // react to changes
+        volumeSlider.RegisterValueChangedCallback(evt =>
+        {
+            AudioListener.volume = evt.newValue;
+            PlayerPrefs.SetFloat("Volume", evt.newValue);
+        });
+
+        fullscreenToggle.RegisterValueChangedCallback(evt =>
+        {
+            Screen.fullScreen = evt.newValue;
+            PlayerPrefs.SetInt("Fullscreen", evt.newValue ? 1 : 0);
+        });
+
 
     }
 

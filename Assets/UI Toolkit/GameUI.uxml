@@ -46,9 +46,9 @@
     <ui:VisualElement name="Options" style="flex-grow: 1; position: absolute; height: 368px; width: 602px; top: 174px; left: 337px; color: rgb(55, 55, 55); background-color: rgb(51, 51, 51); visibility: visible;">
         <ui:Label text="OPTIONS" name="OptionsTitle" style="position: absolute; top: 6px; left: 0; height: 68px; width: 588px; color: rgb(255, 255, 255); -unity-text-align: upper-center; font-size: 44px;"/>
         <ui:Button text="Button" style="position: absolute; top: 86px; left: 257px;"/>
-        <ui:Button text="Button" style="position: absolute; top: 153px; left: 253px;"/>
         <ui:Button text="Exit" name="ExitOptionsButton" style="position: absolute; top: 292px; left: 263px;"/>
-        <ui:Button text="Button" style="position: absolute; top: 225px; left: 250px;"/>
+        <ui:Slider label="Volume:" value="42" high-value="100" name="VolumeSlider" style="position: absolute; height: 46px; width: 397px; top: 221px; left: 17px; color: rgb(188, 188, 188); font-size: 26px;"/>
+        <ui:Toggle label="Full Screen:" name="FullscreenToggle" style="position: absolute; top: 161px; left: 119px; height: 43px; width: 276px; color: rgb(188, 188, 188); font-size: 26px;"/>
     </ui:VisualElement>
     <ui:VisualElement name="GameOver" style="flex-grow: 1; position: absolute; height: 1078px; width: 1928px; background-color: rgba(0, 0, 0, 0.506); visibility: visible;">
         <ui:VisualElement name="GameOverMenu" style="flex-grow: 1; position: absolute; height: 278px; width: 265px; top: 191px; left: 499px; background-color: rgb(47, 0, 0); visibility: visible; color: rgb(0, 0, 0);">

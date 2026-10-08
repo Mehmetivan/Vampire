@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   stats: {fileID: 3146593217663261466}
+  deathEffect: {fileID: 2397492309719047642, guid: bb01bb1ed20989544b2cbac55be420cc, type: 3}
   health: 0
 --- !u!114 &8360139666274672040
 MonoBehaviour:

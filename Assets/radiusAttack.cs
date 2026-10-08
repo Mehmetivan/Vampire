@@ -19,6 +19,7 @@ public class radiusAttack : MonoBehaviour
             if (damageable != null)
             {
                 damageable.TakeDamage(stats.Damage);
+                SoundEffects.Instance.PlayPlayerAttack();
 
                 attackTimer = attackCooldown;
             }

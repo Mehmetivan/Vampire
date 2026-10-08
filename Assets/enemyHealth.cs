@@ -6,6 +6,8 @@ public class enemyHealth : MonoBehaviour, IDamageable
 
     [SerializeField] private EnemyStats stats;
 
+    [SerializeField] private GameObject deathEffect;
+
     public float health;
     public float maxHealth => stats.MaxHealth;
 
@@ -22,6 +24,7 @@ public class enemyHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
+        SoundEffects.Instance.PlayEnemyTakeDamage();
         if (health <= 0)
         {
             Die();
@@ -32,7 +35,12 @@ public class enemyHealth : MonoBehaviour, IDamageable
 
     public void Die()
     {
+
+        if (deathEffect != null)
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+
         Killed?.Invoke(this);
+        //SoundEffects.Instance.PlayEnemyDeath();
         Destroy(gameObject); 
     }
 

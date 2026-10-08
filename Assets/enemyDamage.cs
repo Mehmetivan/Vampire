@@ -17,6 +17,7 @@ public class enemyDamage : MonoBehaviour
         if (damageable != null)
         {
             damageable.TakeDamage(stats.Damage);
+            SoundEffects.Instance.PlayEnemyAttack();
         }
     }
 

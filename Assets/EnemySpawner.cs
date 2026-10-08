@@ -41,7 +41,7 @@ public class EnemySpawner : MonoBehaviour, IUpdateable
             SpawnCube();
             nextSpawn = 0;
         }
-        if (BatSpawn >= 1)
+        if (BatSpawn >= 4)
         {
             SpawnBat();
             BatSpawn = 0;

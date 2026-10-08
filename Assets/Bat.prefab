@@ -222,6 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::batDamage
   stats: {fileID: 7791169243595545027}
   delay: 3
+  deathEffect: {fileID: 6110975159418258981, guid: 7d10b5d0a3f8f6a49b1a9758a1b8c185, type: 3}
 --- !u!58 &1619517063521262546
 CircleCollider2D:
   m_ObjectHideFlags: 0

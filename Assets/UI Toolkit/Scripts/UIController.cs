@@ -123,6 +123,8 @@ public class UIController : MonoBehaviour
         Highscore = root.Q<Label>("HighScore");
         Highscore.text = PlayerPrefs.GetFloat("HighScore", 0f).ToString("F0");
 
+        SoundEffects.Instance.PlayMainMenu();
+
     }
 
     public void OnPlayClicked()
@@ -130,6 +132,8 @@ public class UIController : MonoBehaviour
         Debug.Log("PLAY BUTTON CLICKED!");
         GameManager.Instance.ResumeGame();
         startOverlayBackground.style.display = DisplayStyle.None;
+        SoundEffects.Instance.PlayPressPlay();
+        SoundEffects.Instance.PlayBackground();
 
     }
 
@@ -137,6 +141,8 @@ public class UIController : MonoBehaviour
     public void OnPauseClicked()
     {
         Debug.Log("PAUSE BUTTON CLICKED!");
+
+        SoundEffects.Instance.PlayUiSelect();
 
         if (GameManager.Instance.State != GameManager.GameState.PlayingState) return;
 
@@ -150,6 +156,8 @@ public class UIController : MonoBehaviour
     {
         Debug.Log("RESUME BUTTON CLICKED!");
 
+        SoundEffects.Instance.PlayUiSelect();
+
         GameManager.Instance.ResumeGame();
 
         pauseOverlayBackground.style.display = DisplayStyle.None;
@@ -158,6 +166,8 @@ public class UIController : MonoBehaviour
     public void OnStartOptionsClicked()
     {
         Debug.Log("START OPTIONS BUTTON CLICKED!");
+        SoundEffects.Instance.PlayUiSelect();
+
         optionsOverlay.style.display = DisplayStyle.Flex;
 
     }
@@ -165,18 +175,24 @@ public class UIController : MonoBehaviour
     public void OnPauseOptionsClicked()
     {
         Debug.Log("PAUSE OPTIONS BUTTON CLICKED!");
+        SoundEffects.Instance.PlayUiSelect();
+
         optionsOverlay.style.display = DisplayStyle.Flex;
     }
 
     public void OnExitOptionsClicked()
     {
         Debug.Log("EXIT OPTIONS BUTTON CLICKED!");
+        SoundEffects.Instance.PlayUiSelect();
+
         optionsOverlay.style.display = DisplayStyle.None;
     }
 
     public void OnLoseGame()
     {
         Debug.Log("LOSE GAME!");
+        SoundEffects.Instance.PlayPlayerDeath();
+
         loseOverlayBackground.style.display = DisplayStyle.Flex;
         loseOverlayMenu.style.display = DisplayStyle.Flex;
     }
@@ -184,12 +200,17 @@ public class UIController : MonoBehaviour
     public void OnRestartButtonClicked()
     {
         Debug.Log("RESTART BUTTON CLICKED!");
+        SoundEffects.Instance.PlayUiSelect();
+
         GameManager.Instance.RestartGame();
     }
     public void ShowUpgradeMenu()
     {
+        SoundEffects.Instance.PlayLevelUp();
         UpgradeBackground.style.display = DisplayStyle.Flex;
         UpgradeMenu.style.display = DisplayStyle.Flex;
+        
+
     }
 
     public void HideUpgradeMenu()

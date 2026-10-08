@@ -96,6 +96,7 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
 
         Vector2 dir = new Vector2(horizontal, vertical).normalized;
         if (dir == Vector2.zero) dir = Vector2.right; // fallback if standing still
+        SoundEffects.Instance.PlayDash();
 
         body.linearVelocity = dir * dashingPower;
         trailRenderer.emitting = true;

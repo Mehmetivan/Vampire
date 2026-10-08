@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     PauseGame();
-                    UIController.Instance.OnPauseClicked();
+                    
                 }
 
 
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.P))
                 {
                     ResumeGame();
-                    UIController.Instance.OnResumeClicked();
+                    
                 }
 
                 break;
@@ -68,12 +68,14 @@ public class GameManager : MonoBehaviour
 
         State = GameState.PauseState;
         GameUpdateManager.Instance.SetUpdating(false);
+        //UIController.Instance.OnPauseClicked();
     }
 
     public void ResumeGame()
     {
         State = GameState.PlayingState;
         GameUpdateManager.Instance.SetUpdating(true);
+        //UIController.Instance.OnResumeClicked();
     }
 
     public void LoseGame()

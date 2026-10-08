@@ -16,6 +16,7 @@ public class playerHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
+        SoundEffects.Instance.PlayPlayerTakeDamage();
         if (health <= 0)
         {
             GameManager.Instance.LoseGame();

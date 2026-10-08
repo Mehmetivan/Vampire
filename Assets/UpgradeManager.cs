@@ -50,6 +50,8 @@ public class UpgradeManager : MonoBehaviour
             case UpgradeType.Damage: stats.Damage *= 1.15f; break;
         }
 
+        playerHealth.Heal(stats.MaxHealth);
+
         UpgradeCount++;
         kills = 0;
         menuOpen = false;

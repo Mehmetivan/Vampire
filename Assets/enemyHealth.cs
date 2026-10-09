@@ -8,6 +8,8 @@ public class enemyHealth : MonoBehaviour, IDamageable
 
     [SerializeField] private GameObject deathEffect;
 
+    [SerializeField] private Animator animator;
+
     public float health;
     public float maxHealth => stats.MaxHealth;
 
@@ -24,6 +26,8 @@ public class enemyHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
+        animator.SetBool("isHurt", true);
+
         SoundEffects.Instance.PlayEnemyTakeDamage();
         if (health <= 0)
         {
@@ -43,6 +47,12 @@ public class enemyHealth : MonoBehaviour, IDamageable
         //SoundEffects.Instance.PlayEnemyDeath();
         Destroy(gameObject); 
     }
+
+    public void endHurt()
+    {
+        animator.SetBool("isHurt", false);
+    }
+
 
 
 }

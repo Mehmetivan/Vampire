@@ -3,6 +3,8 @@ using UnityEngine;
 public class playerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private PlayerStats stats;
+
+    [SerializeField] private Animator animator;
     public float health;
 
     public float MaxHealth => stats.MaxHealth;
@@ -16,6 +18,7 @@ public class playerHealth : MonoBehaviour, IDamageable
     public void TakeDamage(float damage)
     {
         health -= damage;
+        animator.SetBool("isHurt", true);
         SoundEffects.Instance.PlayPlayerTakeDamage();
         if (health <= 0)
         {
@@ -27,6 +30,13 @@ public class playerHealth : MonoBehaviour, IDamageable
     {
         health = Mathf.Min(health + amount, stats.MaxHealth);
     }
+
+
+    public void endHurt()
+    {
+        animator.SetBool("isHurt", false);
+    }
+
 
 
 }

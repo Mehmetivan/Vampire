@@ -109,7 +109,9 @@ public class Player : MonoBehaviour, IUpdateable, IFixedUpdateable
 
         if (isDashing) return;
 
-        body.linearVelocity = new Vector2(horizontal * stats.Speed, vertical * stats.Speed);
+        Vector2 direction = new Vector2(horizontal, vertical).normalized;
+
+        body.linearVelocity = direction * stats.Speed;
 
         if (horizontal != 0 || vertical != 0)
         {
